@@ -2,6 +2,12 @@
 FROM node:14 
 # Definindo diretório padrão sendo /app-node
 WORKDIR /app-node
+# Variável de porta para usar dentro da imagem. É usado em tempo de build da imagem
+ARG PORT_BUILD=3000
+# Usado dentro do container
+ENV PORT=$PORT_BUILD
+# Exposta na porta
+EXPOSE $PORT_BUILD
 # Copia o que está no diretório atual para o diretório definido no WORKDIR
 COPY . .
 # Comando abaixo será executado enquanto a imagem estiver sendo criada
